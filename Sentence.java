@@ -1,6 +1,4 @@
 /**
- * @author Chris Murphy
- *
  * This class represents a single sentence from the input file.
  *
  */
