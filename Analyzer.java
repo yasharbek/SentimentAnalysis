@@ -158,30 +158,17 @@ public class Analyzer {
 					//it is alphabetic, so add it to count
 					if (Character.isLetter(word.charAt(0))){
 						count++;
-						//if it is lowercase, check if word is in map
-						if (Character.isLowerCase(word.charAt(0))){
-							//if it is in map, get its value and add it to score
-							if(wordScores.containsKey(word)){
-								score += wordScores.get(word);
-							}
-							//if it isn't, add it to the map with the value
-							else{
-								Double zero = Double.valueOf(0);
-								wordScores.put(word, zero);
-							}
+						//turn every word into lowercase just in case
+
+						String lowercasedWord = word.toLowerCase();
+						if(wordScores.containsKey(lowercasedWord)){
+							score += wordScores.get(lowercasedWord);
 						}
-						
-						//if it isn't lowercase then turn it lowercase
 						else{
-							String lowercasedWord = word.toLowerCase();
-							if(wordScores.containsKey(lowercasedWord)){
-								score += wordScores.get(lowercasedWord);
-							}
-							else{
-								Double zero = Double.valueOf(0);
-								wordScores.put(lowercasedWord, zero);
-							}
+							Double zero = Double.valueOf(0);
+							wordScores.put(lowercasedWord, zero);
 						}
+
 					}
 				}
 				double finalScore = score/count;
